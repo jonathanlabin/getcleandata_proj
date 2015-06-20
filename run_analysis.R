@@ -32,11 +32,24 @@ library(dplyr)
 ##    with the average of each variable for each activity and each subject.
 ##  * This is handled by computeSubjectActivityAve
 ##
-## Each of the functions (except readDataSet) are assigned argument defaults
-## such that the user of the script can simply call writeSummaryData() with
-## no arguments and all of the functions will chain together automatically.
 ##
-## TL;DR: call writeSummaryData()
+## The script will perform the analysis automatically when it is sourced by R.
+## It does so with an initial call to writeSummaryData() using the default 
+## argument values.
+## To disable this automated analysis, please comment out the following line:
+writeSummaryData()
+ 
+## However, each of the functions can be called with alternate argument values
+## in situations where different file names or paths are required.
+## In this case, an example call sequence is:
+##
+##   data <- readAndMergeData("<path to root of raw data>")
+##   data <- reduceToMeanStdData(data)
+##   data <- computeSubjectActivityAve(data)
+##   writeSummaryData(data, fileOutPath="<path to output file>")
+##
+## If such a customized call sequence is required, comment out the above call
+## to writeSummaryData() above.
 
 ## Writes the data frame in to the file specified by fileOutPath.
 ## The x argument is of the form produced by computeSugjectActivityAve and if
