@@ -29,7 +29,6 @@ From the README.txt file from the raw data archive:
 >The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
 >
 >For each record it is provided:
->======================================
 >
 > - Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
 > - Triaxial Angular velocity from the gyroscope. 
@@ -44,14 +43,14 @@ See the README.md file and the script comments for a full description of the str
 ### Read individual data sets
 The raw archive contains two separate data sets: "train" and "test".  The first step in the study was to read both of these sets into R for further manipulation.
 The function readDataSet will read either data set based on a setName argument and return a data frame which merges data from the following files:
-* subject_<setName>.txt
-* X_<setName>.txt
-* y_<setName>.txt
+* subject_&lt;setName&gt;.txt
+* X_&lt;setName&gt;.txt
+* y_&lt;setName&gt;.txt
 Additionally a factor column named SourceSet is included which labels all of the rows with the source set from which it was read (again "train" or "test")
 
-The columns of data from the X_<setName>.txt file are assigned from the values provided in features.txt.
-The data from the subject_<setName>.txt file is a single column and is assigned a column name of "SubjectID"
-The dat from the y_<setName>.txt file is a single column and is assigned the column name of "Activity" and is converted to a factor type using the labels provided in activity_labels.txt.
+The columns of data from the X_&lt;setName&gt;.txt file are assigned from the values provided in features.txt.
+The data from the subject_&lt;setName&gt;.txt file is a single column and is assigned a column name of "SubjectID"
+The dat from the y_&lt;setName&gt;.txt file is a single column and is assigned the column name of "Activity" and is converted to a factor type using the labels provided in activity_labels.txt.
 
 ### Merge Data
 The two data sets ("train" and "test") are merged into one single data frame using the function readAndMergeData.
